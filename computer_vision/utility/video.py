@@ -13,6 +13,8 @@ class VideoCapture():
     def __init__(self) -> None:
         super().__init__()
         self._video_capture = None
+        self._height = 0
+        self._width = 0
 
     def set_source(self, source) -> int:
         # Get a reference to webcam
@@ -26,10 +28,16 @@ class VideoCapture():
             # input from video
             else:
                 self._video_capture = cv2.VideoCapture(source)
+
+            self._height = int(self._video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            self._width = int(self._video_capture.get(cv2.CAP_PROP_FRAME_WIDTH))
         except:
             return False
 
         return True
+
+    def size(self):
+        return (self._width, self._height)
 
     def read(self) -> (bool, np.ndarray):
         # Grab a single frame of video
@@ -49,6 +57,9 @@ class ImageFilter(VideoCapture):
     def video_capture(self):
         return self._video_capture
 
+    def size(self):
+        return self._video_capture.size()
+
     def read(self):
         return self._video_capture.read()
 
@@ -59,24 +70,32 @@ class FishEye(ImageFilter):
 
     def set(self, value):
         # Fisheye distortion correction for HIKVISION Camera
-        self.__rfd_matrix = np.eye(3, dtype = np.float32)
-        self.__rfd_dist_coeff = np.zeros((4,1),np.float64)
+        self.__rfd_dist_coeff = np.zeros((4,1), np.float64)
 
         # negative to remove barrel distortion
-        self.__rfd_dist_coeff[0,0] = 0.0
+        self.__rfd_dist_coeff[0,0] = value
 
         self.__rfd_dist_coeff[1,0] = 0.0
         self.__rfd_dist_coeff[2,0] = 0.0
         self.__rfd_dist_coeff[3,0] = 0.0
 
-        self.__rfd_dist_coeff[0,0] = value
+        self._width, self._height = self.video_capture.size()
+
+        self.__rfd_matrix = np.eye(3, dtype = np.float32)
+        self.__rfd_matrix[0,2] = self._width / 2.0
+        self.__rfd_matrix[1,2] = self._height / 2.0
+
+        self._mapx, self._mapy = cv2.initUndistortRectifyMap(self.__rfd_matrix, 
+            self.__rfd_dist_coeff, np.eye(3), self.__rfd_matrix, 
+            (self._width, self._height), cv2.CV_16SC2)
 
     def read(self):
         # Grab a single frame of video
         ret, frame = self.video_capture.read()
 
         if ret:
-            frame = cv2.undistort(frame, self.__rfd_matrix, self.__rfd_dist_coeff)
+            frame = cv2.remap(frame, self._mapx, self._mapy, cv2.INTER_LINEAR, 
+                                borderMode=cv2.BORDER_CONSTANT)
             return ret, frame
         else:
             return ret, None
