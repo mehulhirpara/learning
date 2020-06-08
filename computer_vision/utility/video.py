@@ -118,6 +118,70 @@ class Histogram(ImageFilter):
         else:
             return ret, None
 
+class CLAHEHistogram(ImageFilter):
+    def __init__(self, video_capture):
+        super().__init__(video_capture)
+        self.cl = cv2.createCLAHE(clipLimit=0.5, tileGridSize=(16,16))
+
+    def read(self):
+        # Grab a single frame of video
+        ret, frame = self.video_capture.read()
+
+        if ret:
+            img_yuv = cv2.cvtColor(frame, cv2.COLOR_BGR2YUV)
+
+            # equalize the histogram of the Y channel
+            img_yuv[:,:,0] = self.cl.apply(img_yuv[:,:,0])
+
+            # convert the YUV image back to RGB format
+            frame = cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
+
+            return ret, frame
+        else:
+            return ret, None
+
+class HSVBrightness(ImageFilter):
+    def __init__(self, video_capture):
+        super().__init__(video_capture)
+        self.cl = cv2.createCLAHE(clipLimit=0.5, tileGridSize=(16,16))
+        self.value = 1.5
+
+    def read(self):
+        # Grab a single frame of video
+        ret, frame = self.video_capture.read()
+
+        if ret:
+            img_hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+            current_value = img_hsv[...,2]
+            if current_value.all() != 0:
+                img_hsv[...,2] = np.where((255/current_value) < self.value, 255, current_value * self.value)
+
+            frame = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
+
+            return ret, frame
+        else:
+            return ret, None
+
+class HSVCLAHEHistogram(ImageFilter):
+    def __init__(self, video_capture):
+        super().__init__(video_capture)
+        self.cl = cv2.createCLAHE(clipLimit=0.5, tileGridSize=(8,8))
+
+    def read(self):
+        # Grab a single frame of video
+        ret, frame = self.video_capture.read()
+
+        if ret:
+            img_hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+            img_hsv[...,2] = self.cl.apply(img_hsv[...,2])
+
+            frame = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
+
+            return ret, frame
+        else:
+            return ret, None
+
 if __name__ == '__main__':
     # construct the argument parse and parse the arguments
     ap = argparse.ArgumentParser()
@@ -126,7 +190,13 @@ if __name__ == '__main__':
     ap.add_argument("-fe", "--fisheye", type=float,
         help="parameters to adjust fisheye")
     ap.add_argument("-hg", "--histogram", type=bool,
-        help="parameters to adjust fisheye")
+        help="parameters to apply histogram")
+    ap.add_argument("-cl", "--clahe_histogram", type=bool,
+        help="parameters to apply CLAHE histogram")
+    ap.add_argument("-hb", "--hsv_brightness", type=bool,
+        help="parameters to HSV brightness")
+    ap.add_argument("-hch", "--hsv_clahe_histogram", type=bool,
+        help="parameters to HSV CLAHE brightness")
     args = vars(ap.parse_args())
 
     vc = VideoCapture()
@@ -139,6 +209,15 @@ if __name__ == '__main__':
 
         if args["histogram"]:
             vc = Histogram(vc)
+
+        if args["clahe_histogram"]:
+            vc = CLAHEHistogram(vc)
+
+        if args["hsv_brightness"]:
+            vc = HSVBrightness(vc)
+
+        if args["hsv_clahe_histogram"]:
+            vc = HSVCLAHEHistogram(vc)
 
         while True:
             ret, frame = vc.read()
