@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-02T16:52:34.369Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" version="20.6.0" etag="6_DJSMiYM9-H5GJYbMmp" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2022-12-02T16:56:44.192Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" version="20.6.0" etag="TQzh5wWBurA2s3q9pm8K" type="github" pages="3">
   <diagram id="A5DwCtqEQp1Hk9xYdqJr" name="V1.0">
     <mxGraphModel dx="1360" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -131,7 +131,7 @@
         <mxCell id="7NB1IAGrglmfCWNVKH0Y-0" />
         <mxCell id="7NB1IAGrglmfCWNVKH0Y-1" parent="7NB1IAGrglmfCWNVKH0Y-0" />
         <mxCell id="7NB1IAGrglmfCWNVKH0Y-2" value="Azure" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;dashed=1;fillColor=none;strokeColor=#3399FF;strokeWidth=2;align=left;verticalAlign=bottom;spacingLeft=4;spacingBottom=2;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
-          <mxGeometry x="160" y="325" width="910" height="200" as="geometry" />
+          <mxGeometry x="160" y="325" width="690" height="200" as="geometry" />
         </mxCell>
         <mxCell id="7NB1IAGrglmfCWNVKH0Y-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="7NB1IAGrglmfCWNVKH0Y-1" source="7NB1IAGrglmfCWNVKH0Y-4" target="7NB1IAGrglmfCWNVKH0Y-6">
           <mxGeometry relative="1" as="geometry" />
@@ -145,46 +145,20 @@
         <mxCell id="7NB1IAGrglmfCWNVKH0Y-6" value="Azure IoT Hub" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
           <mxGeometry x="180" y="345" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="7NB1IAGrglmfCWNVKH0Y-1" source="7NB1IAGrglmfCWNVKH0Y-8" target="7NB1IAGrglmfCWNVKH0Y-10">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="7NB1IAGrglmfCWNVKH0Y-8" value="Event Hub" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
           <mxGeometry x="340" y="345" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="7NB1IAGrglmfCWNVKH0Y-1" source="7NB1IAGrglmfCWNVKH0Y-10" target="7NB1IAGrglmfCWNVKH0Y-13">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-10" value="Function" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
-          <mxGeometry x="340" y="445" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-11" value="Real-time data stream" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="7NB1IAGrglmfCWNVKH0Y-1" source="7NB1IAGrglmfCWNVKH0Y-8" target="7NB1IAGrglmfCWNVKH0Y-14">
+        <mxCell id="7NB1IAGrglmfCWNVKH0Y-11" value="&amp;nbsp;Real-time data stream &amp;amp; historical data&amp;nbsp;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;spacingLeft=0;spacingRight=0;" edge="1" parent="7NB1IAGrglmfCWNVKH0Y-1" source="7NB1IAGrglmfCWNVKH0Y-8" target="eX_ixeX3e7lfgHmzCyOR-0">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="780" y="375" as="sourcePoint" />
+            <mxPoint x="930" y="370" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="7NB1IAGrglmfCWNVKH0Y-1" source="7NB1IAGrglmfCWNVKH0Y-13" target="7NB1IAGrglmfCWNVKH0Y-16">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="7NB1IAGrglmfCWNVKH0Y-17" value="To store 2 weeks of data, it is required to buy Premium subscription." style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=default;strokeWidth=1;fillColor=#FFF4C3;shadow=1;flipV=1;flipH=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
+          <mxGeometry x="270" y="390" width="280" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-13" value="CosmosDB" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
-          <mxGeometry x="500" y="445" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-14" value="Frontend App" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
-          <mxGeometry x="930" y="360" width="120" height="65" as="geometry" />
-        </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-15" value="Historical data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="7NB1IAGrglmfCWNVKH0Y-1" source="7NB1IAGrglmfCWNVKH0Y-16" target="7NB1IAGrglmfCWNVKH0Y-14">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-16" value="APIs" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
-          <mxGeometry x="660" y="445" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-17" value="CosmosDB is not required if data needs to be stored for 2 weeks. This can be achieved by event hub itself." style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=default;strokeWidth=1;fillColor=#FFF4C3;shadow=1;flipV=1;flipH=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
-          <mxGeometry x="370" y="490" width="280" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-18" value="Two data streams can be avoided only by using event hub" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=default;strokeWidth=1;fillColor=#FFF4C3;shadow=1;flipV=1;flipH=0;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
-          <mxGeometry x="710" y="470" width="280" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="7NB1IAGrglmfCWNVKH0Y-19" value="Function is required only to store the data into CosmosDB." style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=default;strokeWidth=1;fillColor=#FFF4C3;shadow=1;flipV=1;flipH=1;direction=south;spacingLeft=3;spacingBottom=1;spacingRight=3;spacingTop=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
-          <mxGeometry x="180" y="430" width="180" height="60" as="geometry" />
+        <mxCell id="eX_ixeX3e7lfgHmzCyOR-0" value="Frontend App" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="7NB1IAGrglmfCWNVKH0Y-1">
+          <mxGeometry x="710" y="345" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
